@@ -16,14 +16,16 @@ function removeDirectory($dir)
 function isAndroidFileExtension($name): bool
 {
     $info = pathinfo($name);
-    $fileExtension = $info["extension"];
-    if (
-        $fileExtension == "apk" ||
-        $fileExtension == "xapk" ||
-        $fileExtension == "apks" ||
-        $fileExtension == "apkm"
-    ) {
-        return true;
+    if (isset($info["extension"])) {
+        $fileExtension = $info["extension"];
+        if (
+            $fileExtension == "apk" ||
+            $fileExtension == "xapk" ||
+            $fileExtension == "apks" ||
+            $fileExtension == "apkm"
+        ) {
+            return true;
+        }
     }
     return false;
 }

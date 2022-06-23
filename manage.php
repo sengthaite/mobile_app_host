@@ -127,6 +127,7 @@
         </div>
 
         <?php
+
         require_once 'managesprint.php';
         require_once 'manageapp.php';
         require_once 'utils.php';
@@ -162,7 +163,7 @@
                         break;
                     case ACTIONS_TYPE::delete_sprint:
                         $sprint_manager->removeSprint($saved_data);
-                        $_SESSION['selected_dir'] = NULL;
+                        unset($_SESSION['selected_dir']);
                         break;
                     case ACTIONS_TYPE::add_app:
                         $manager->addApp($saved_data, $_SESSION['selected_dir']);
@@ -172,9 +173,9 @@
                         break;
                     case ACTIONS_TYPE::delete_tmp:
                         if (!removeDirectory(TMP_DIR)) {
-                            echo "remove trash failed";
+                            echo "remove tmp dir failed";
                         }
-                        $_SESSION['selected_dir'] = NULL;
+                        unset($_SESSION['selected_dir']);
                         break;
                     default:
                         break;
